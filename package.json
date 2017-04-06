@@ -1,17 +1,40 @@
 {
-    "buildNpmdoc":"base64-img",
+    "author": "kai zhu <kaizhu256@gmail.com>",
+    "buildNpmdoc": "base64-img",
+    "description": "api documentation for [base64-img (v1.0.3)](https://github.com/douzi8/base64-img) [![npm package](https://img.shields.io/npm/v/npmdoc-base64-img.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-base64-img) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-base64-img.svg)](https://travis-ci.org/npmdoc/node-npmdoc-base64-img)",
     "devDependencies": {
         "base64-img": "*",
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
         "utility2": "kaizhu256/node-utility2#alpha"
     },
-    "name":"npmdoc-base64-img",
+    "engines": {
+        "node": ">=4.0"
+    },
+    "homepage": "https://github.com/npmdoc/node-npmdoc-base64-img",
+    "keywords": [
+        "documentation",
+        "base64-img"
+    ],
+    "license": "MIT",
+    "main": "lib.npmdoc_base64_img.js",
+    "name": "npmdoc-base64-img",
+    "nameAlias": "npmdoc_base64_img",
+    "nameOriginal": "npmdoc-base64-img",
+    "os": [
+        "darwin",
+        "linux"
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/npmdoc/node-npmdoc-base64-img"
     },
     "scripts": {
-        "build-ci": "utility2 shReadmeTest build_ci.sh"
+        "build-ci": "utility2 shReadmeTest build_ci.sh",
+        "env": "env",
+        "heroku-postbuild": "(set -e; npm install \"kaizhu256/node-utility2#alpha\"; utility2 shDeployHeroku)",
+        "postinstall": "if [ -f npm_scripts.sh ]; then ./npm_scripts.sh postinstall; fi",
+        "start": "(set -e; export PORT=${PORT:-8080}; utility2 start test.js)",
+        "test": "(set -e; export PORT=$(utility2 shServerPortRandom); utility2 test test.js)"
     },
     "version": "0.0.1"
 }
