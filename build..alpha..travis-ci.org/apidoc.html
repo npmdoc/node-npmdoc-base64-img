@@ -1,0 +1,299 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/douzi8/base64-img"
+
+    >base64-img (v1.0.3)</a>
+</h1>
+<h4>Convert img to base64, or convert base64 to img</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.base64-img">module base64-img</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.base64-img.base64">
+            function <span class="apidocSignatureSpan">base64-img.</span>base64
+            <span class="apidocSignatureSpan">(filename, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.base64-img.base64Sync">
+            function <span class="apidocSignatureSpan">base64-img.</span>base64Sync
+            <span class="apidocSignatureSpan">(filename)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.base64-img.img">
+            function <span class="apidocSignatureSpan">base64-img.</span>img
+            <span class="apidocSignatureSpan">(data, destpath, name, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.base64-img.imgSync">
+            function <span class="apidocSignatureSpan">base64-img.</span>imgSync
+            <span class="apidocSignatureSpan">(data, destpath, name)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.base64-img.requestBase64">
+            function <span class="apidocSignatureSpan">base64-img.</span>requestBase64
+            <span class="apidocSignatureSpan">(url, callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.base64-img" id="apidoc.module.base64-img">module base64-img</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.base64-img.base64" id="apidoc.element.base64-img.base64">
+        function <span class="apidocSignatureSpan">base64-img.</span>base64
+        <span class="apidocSignatureSpan">(filename, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">base64 = function (filename, callback) {
+  if (!callback) callback = util.noop;
+
+  fs.readFile(filename, function(err, data) {
+    if (err) return callback(err);
+
+    callback(null, base64(filename, data));
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+npm install base64-img --save
+```
+## test
+```
+mocha
+```
+## API
+### .<span class="apidocCodeKeywordSpan">base64</span>(filename, callback)
+Convert image file to image base64 data
+* {string} ``filename`` required
+The image path
+* {function} ``callback(err, data)`` required
+Callback with image base64 data
+```js
+base64Img.base64(&#x27;path/demo.png&#x27;, function(err, data) {})
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.base64-img.base64Sync" id="apidoc.element.base64-img.base64Sync">
+        function <span class="apidocSignatureSpan">base64-img.</span>base64Sync
+        <span class="apidocSignatureSpan">(filename)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">base64Sync = function (filename) {
+  var data = fs.readFileSync(filename);
+
+  return base64(filename, data);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+The image path
+* {function} ``callback(err, data)`` required
+Callback with image base64 data
+```js
+base64Img.base64(&#x27;path/demo.png&#x27;, function(err, data) {})
+```
+
+### .<span class="apidocCodeKeywordSpan">base64Sync</span>(filename)
+The api same as base64, but it&#x27;s synchronous
+```js
+var data = base64Img.base64Sync(&#x27;path/demo.png&#x27;);
+```
+
+### .requestBase64(url, callback)
+* {string} ``url`` required
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.base64-img.img" id="apidoc.element.base64-img.img">
+        function <span class="apidocSignatureSpan">base64-img.</span>img
+        <span class="apidocSignatureSpan">(data, destpath, name, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">img = function (data, destpath, name, callback) {
+  var result = img(data);
+  var filepath = path.join(destpath, name + result.extname);
+
+  fs.writeFile(filepath, result.base64, { encoding: &#x27;base64&#x27; }, function(err) {
+    callback(err, filepath);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```js
+var url = &#x27;http://../demo.png&#x27;;
+base64Img.requestBase64(url, function(err, res, body) {
+
+});
+```
+
+### .<span class="apidocCodeKeywordSpan">img</span>(data, destpath, name, callback)
+Convert image base64 data to image
+* {string} ``data`` required
+Image base64 data
+* {string} ``destpath`` required
+Dest path, if the destpath is root, pass empty string
+* {string} ``name`` required
+The image&#x27;s filename
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.base64-img.imgSync" id="apidoc.element.base64-img.imgSync">
+        function <span class="apidocSignatureSpan">base64-img.</span>imgSync
+        <span class="apidocSignatureSpan">(data, destpath, name)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">imgSync = function (data, destpath, name) {
+  var result = img(data);
+  var filepath = path.join(destpath, name + result.extname);
+
+  fs.writeFileSync(filepath, result.base64, { encoding: &#x27;base64&#x27; });
+  return filepath;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+* {string} ``name`` required
+The image&#x27;s filename
+* {function} ``callback(err, filepath)`` required
+```js
+base64Img.img(&#x27;data:image/png;base64,...&#x27;, &#x27;dest&#x27;, &#x27;1&#x27;, function(err, filepath) {});
+```
+
+### .<span class="apidocCodeKeywordSpan">imgSync</span>(data, destpath, name)
+The api same as img, but it&#x27;s synchronous
+```js
+var filepath = base64Img.imgSync(&#x27;data:image/png;base64,...&#x27;, &#x27;&#x27;, &#x27;2&#x27;);
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.base64-img.requestBase64" id="apidoc.element.base64-img.requestBase64">
+        function <span class="apidocSignatureSpan">base64-img.</span>requestBase64
+        <span class="apidocSignatureSpan">(url, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">requestBase64 = function (url, callback) {
+  request({
+    url: url,
+    isBuffer: true
+  }, function (err, res, body) {
+    if (err) return callback(err);
+
+    var data = &#x27;data:&#x27; + res.headers[&#x27;content-type&#x27;] + &#x27;;base64,&#x27; + body.toString(&#x27;base64&#x27;);
+    callback(err, res, data);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+### .base64Sync(filename)
+The api same as base64, but it&#x27;s synchronous
+```js
+var data = base64Img.base64Sync(&#x27;path/demo.png&#x27;);
+```
+
+### .<span class="apidocCodeKeywordSpan">requestBase64</span>(url, callback)
+* {string} ``url`` required
+* {function} ``callback(err, res, body)`` required
+Callback with http request
+```js
+var url = &#x27;http://../demo.png&#x27;;
+base64Img.requestBase64(url, function(err, res, body) {
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
